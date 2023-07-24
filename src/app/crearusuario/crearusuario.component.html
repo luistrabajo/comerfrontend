@@ -1,0 +1,105 @@
+
+
+
+
+<div class="col-md-4 offset-md-4">
+<form [formGroup]="crear_user" >
+  <fieldset>
+       
+    
+    <div class="form-group row">
+     
+    <div class="form-group">
+        <label for="Email" class="form-label mt-4">Correo Electronico</label>        
+        <input type="email" class="form-control" formControlName="email" aria-describedby="emailHelp" placeholder="Email">
+        <small id="emailHelp" class="form-text text-muted">Introduce el correo electroníco</small>       
+        
+        <p *ngIf="this.user_validation.email == false" class="text-warning">Lo siento verifica el correo electronico</p>
+    
+    </div>
+   
+    <div class="form-group">
+        <label for="Nombre" class="form-label mt-4">Nombre</label>
+        <input type="text" class="form-control" formControlName="nombre"  aria-describedby="nombreHelp" placeholder="Nombre">
+        <small id="nombreHelp" class="form-text text-muted">Introduce el nombre sin caracteres especiales</small>
+        <p *ngIf="this.user_validation.nombre == false" class="text-warning">Lo siento verifica el nombre</p>
+    </div>
+
+    <div class="form-group">
+        <label for="Password" class="form-label mt-4">Password</label>
+        <input type="text" class="form-control" formControlName="password"  aria-describedby="passwordHelp" placeholder="Password">
+        <small id="passwordHelp" class="form-text text-muted">Introduce el password</small>
+        <div class="form-group" *ngIf="this.user_validation.password == false">
+            <p  class="text-warning">Lo siento verifica el password</p>
+            <p  class="text-info">Debe contener</p>
+            <p  class="text-info">
+                Minimo 8 caracteres***
+                Maximo 15***
+                Al menos una letra mayúscula***
+                Al menos una letra minucula***
+                Al menos un dígito***
+                No espacios en blanco***
+                Al menos 1 caracter especial***
+            </p>
+        </div>        
+    </div>     
+    <div class="form-group">          
+         <div class="form-group">
+            <label for="Selecttipodocumento" class="form-label mt-1">Rol:</label>            
+            <select class="form-select" aria-label="Default select example" formControlName="rol" >
+                <option value="ADMIN">ADMIN</option>
+                <option value="USER">USER</option>
+                <option value="INVITED">INVITED</option>
+              </select>
+            </div>   
+        <small id="emailHelp" class="form-text text-muted">Escoje el rol del usuario</small>
+        <p *ngIf="this.user_validation.rol == false" class="text-warning">Lo siento verifica el rol</p>
+    </div>
+   
+    <div class="form-group"> 
+        <br>       
+        <button type="button" class="btn btn-primary" (click)="save()" >Crear</button>
+        <button type="button" class="btn btn-success" (click)="cancelar()">Cancelar</button>
+    </div>
+    <div class="form-group">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Campo</th>
+                <th scope="col">Valor</th>              
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-active">
+                <th scope="row">email</th>
+                <td>{{registro_user.email}}</td>                
+              </tr>
+              <tr class="table-active">
+                <th scope="row">nombre</th>
+                <td>{{registro_user.username}}</td>                
+              </tr>
+              <tr class="table-active">
+                <th scope="row">password</th>
+                <td>{{registro_user.password}}</td>                
+              </tr>
+              <tr class="table-active">
+                <th scope="row">rol</th>
+                <td>{{registro_user.roles}}</td>                
+              </tr>
+              <tr class="table-active">
+                <th scope="row">Vericacion</th>
+                <td></td>                
+              </tr>           
+              <tr class="table-active">
+                <th scope="row">Vericacion res</th>
+                <td>{{res}}</td>                
+              </tr>
+              
+            </tbody>
+          </table>
+    </div>   
+    </div>
+</fieldset>
+</form>
+<br>   
+</div>
